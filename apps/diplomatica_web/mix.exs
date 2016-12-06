@@ -38,7 +38,11 @@ defmodule Diplomatica.Web.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:diplomatica, in_umbrella: true},
-     {:cowboy, "~> 1.0"}
+     {:ua_plug, in_umbrella: true},
+     {:cowboy, "~> 1.0"},
+     {:guardian, "~> 0.13.0"},
+     {:diplomat, git: "https://github.com/doomspork/diplomat.git",
+                 branch: "proposal"},
     ]
   end
 end

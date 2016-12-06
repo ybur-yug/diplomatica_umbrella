@@ -7,20 +7,34 @@ defmodule Diplomatica.Web.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug UaPlug
   end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/", Diplomatica.Web do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Diplomatica.Web do
-  #   pipe_through :api
-  # end
+  pipeline :role_authentication do
+    plug Diplomat.Plug.LoadResource, resource_loader: Diplomatica.Web.UserLoader
+    plug Diplomat.Plug.EnsurePermitted, policy: Diplomatica.Web.UserPolicy
+  end
+
+  scope "/", Diplomatica.Web do
+    pipe_through [:browser, :browser_session, :role_authentication]
+
+    get       "/",       PageController,    :index
+
+    get       "/login",  SessionController, :new,    as: :login
+    post      "/login",  SessionController, :create, as: :login
+    delete    "/logout", SessionController, :delete, as: :logout
+    get       "/logout", SessionController, :delete, as: :logout
+
+    resources "/cats",   CatController
+    resources "/users",  UserController
+  end
 end

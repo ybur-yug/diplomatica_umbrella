@@ -8,6 +8,5 @@ defmodule Diplomatica.Repo.Migrations.CreateCat do
 
       timestamps()
     end
-
   end
 end

@@ -1,5 +1,5 @@
 defmodule Diplomatica.Cat do
-  use Ecto.Schema
+  use Diplomatica.Schema
 
   schema "cats" do
     field :name, :string
