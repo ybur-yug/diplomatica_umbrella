@@ -20,8 +20,8 @@ defmodule Diplomatica.Web.Router do
   end
 
   pipeline :role_authentication do
-    plug Diplomat.Plug.LoadResource, resource_loader: Diplomatica.Web.UserLoader
-    plug Diplomat.Plug.EnsurePermitted, policy: Diplomatica.Web.UserPolicy
+    plug Diplomat.Plug.LoadResource, resource_loader: RoleAuth.UserLoader
+    plug Diplomat.Plug.EnsurePermitted, policy: RoleAuth.UserPolicy
   end
 
   scope "/", Diplomatica.Web do

@@ -36,4 +36,4 @@ config :guardian, Guardian,
   serializer: Diplomatica.Web.GuardianSerializer
 
 config :diplomat,
-  handler: Diplomatica.Web.Handlers.ErrorHandler
+  handler: RoleAuth.Handlers.ErrorHandler

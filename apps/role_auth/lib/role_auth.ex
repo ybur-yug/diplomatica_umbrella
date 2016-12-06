@@ -1,0 +1,2 @@
+defmodule RoleAuth do
+end

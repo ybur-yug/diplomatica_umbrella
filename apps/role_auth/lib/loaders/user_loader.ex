@@ -1,4 +1,4 @@
-defmodule Diplomatica.Web.UserLoader do
+defmodule RoleAuth.UserLoader do
   @behaviour Diplomat.ResourceLoader
 
   alias Diplomatica.Repo

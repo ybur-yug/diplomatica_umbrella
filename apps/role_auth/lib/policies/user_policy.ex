@@ -1,4 +1,4 @@
-defmodule Diplomatica.Web.UserPolicy do
+defmodule RoleAuth.UserPolicy do
   @behaviour Diplomat.Policy
 
   alias Diplomatica.Schema.User

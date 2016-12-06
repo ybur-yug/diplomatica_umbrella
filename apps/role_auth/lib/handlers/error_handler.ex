@@ -1,4 +1,4 @@
-defmodule Diplomatica.Web.Handlers.ErrorHandler do
+defmodule RoleAuth.Handlers.ErrorHandler do
   @behaviour Diplomat.Handler
 
   import Plug.Conn
